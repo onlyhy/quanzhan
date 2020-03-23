@@ -9,7 +9,7 @@ post {{url}}/register
 {{json}}
 
 {
-    "username":"user3",
+    "username":"user8",
     "password":"123456"
 }
 ### 登录
@@ -23,4 +23,4 @@ post {{url}}/login
 
 ### 个人信息(客户端需要传token)
 get {{url}}/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNzcxMDlmNzk5NjBjMjU4YzgxNjA3OCIsImlhdCI6MTU4NDg2MjU4N30.WtwNKZCX4kKYpdneE0DYPo3a7-pBhm7ublWLMlEVcns
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNzg2ODQ4ODZhNzI5NTg2MDY2NzZjZCIsImlhdCI6MTU4NDk0OTM4MX0.h6D1r2IS14oUpSLtKgPVltNSZuMyI7KLwyM5ThHiycA
