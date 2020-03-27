@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-03-27 10:46:39
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-27 15:29:04
+ * @LastEditTime: 2020-03-27 16:20:18
  -->
 <template>
   <div>
@@ -46,9 +46,9 @@ export default {
       //const res = await this.$http.post("categories", this.model);
       // 真实使用时前端要对后端返回数据做判断，判断是否新增成功
       if (this.id) {
-        await this.$http.put(`categories/${this.id}`, this.model);
+        await this.$http.put(`rest/categories/${this.id}`, this.model);
       } else {
-        await this.$http.post("categories", this.model);
+        await this.$http.post("rest/categories", this.model);
       }
       this.$router.push("/categories/list");
       this.$message({
@@ -57,11 +57,11 @@ export default {
       });
     },
     async fetch() {
-      const res = await this.$http.get(`categories/${this.id}`);
+      const res = await this.$http.get(`rest/categories/${this.id}`);
       this.model = res.data;
     },
     async fetchParents(){
-      const res = await this.$http.get(`categories`);
+      const res = await this.$http.get(`rest/categories`);
       this.parents = res.data;
     }
   }

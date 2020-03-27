@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-03-27 13:47:50
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-27 15:47:12
+ * @LastEditTime: 2020-03-27 16:20:42
  -->
 <template>
   <div>
@@ -41,7 +41,7 @@ export default {
         type: "warning"
       })
         .then(async () => {
-          await this.$http.delete(`categories/${row._id}`);
+          await this.$http.delete(`rest/categories/${row._id}`);
           this.$message({
             type: "success",
             message: "删除成功!"
@@ -51,7 +51,7 @@ export default {
         .catch(() => {});
     },
     async fetch() {
-      const res = await this.$http.get("categories");
+      const res = await this.$http.get("rest/categories");
       this.items = res.data;
     }
   }
