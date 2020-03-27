@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-27 11:12:06
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-27 15:01:22
+ * @LastEditTime: 2020-03-27 15:44:48
  */
 
 // 导出一个函数
@@ -27,8 +27,9 @@ module.exports = app =>{
       })
     })
     // 分类列表接口
+    // populate表示关联字段，能获取到关联的整个对象信息
      router.get('/categories',async(req,res)=>{
-      const items = await Category.find().limit(10)
+      const items = await Category.find().populate('parent').limit(10)
       res.send(items)
     })
     // 获取分类详情
