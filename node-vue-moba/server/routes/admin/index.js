@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-27 11:12:06
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-27 16:42:29
+ * @LastEditTime: 2020-03-29 14:23:59
  */
 
 // 导出一个函数
@@ -11,9 +11,18 @@ module.exports = app =>{
         // 合并参数
         mergeParams: true
     })
+    // 动态
+    app.use('/admin/api/rest/:resource',async(req,res,next)=>{
+            //  小写复数转换为大写单数形式，找到接口需要操作的模型（表）
+        const modelName = require('inflection').classify(req.params.resource)
+        // 引用模型（表）赋值给req.Model，以便在接口中使用
+        req.Model = require(`../../models/${modelName}`)
+        // 执行接口
+        next()
+    },router)
+    
     // 新增分类接口
     router.post('/',async(req,res)=>{
-
       const model = await req.Model.create(req.body)
       res.send(model)
     })
@@ -47,11 +56,5 @@ module.exports = app =>{
       res.send(model)
     })
     
-    // 动态
-    //  小写复数转换为大写单数形式
-    app.use('/admin/api/rest/:resource',async(req,res,next)=>{
-        const modelName = require('inflection').classify(req.params.resource)
-        req.Model = require(`../../models/${modelName}`)
-        next()
-    },router)
+
 }

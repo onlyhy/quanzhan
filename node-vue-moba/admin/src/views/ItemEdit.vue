@@ -1,0 +1,61 @@
+<!--
+ * @Date: 2020-03-27 10:46:39
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-03-30 09:54:35
+ -->
+<template>
+  <div>
+    <h1>{{id ? '编辑':'新建'}}物品</h1>
+    <!-- 在表单上加上阻止默认提交，不要跳转页面 -->
+    <el-form label-width="120px" @submit.native.prevent="save">
+      <el-form-item label="名称">
+        <el-input v-model="model.name"></el-input>
+      </el-form-item>
+       <el-form-item label="图标">
+        <el-input v-model="model.icon"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" native-type="submit">保存</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+</template>
+<script>
+export default {
+  props: {
+    id: {}
+  },
+  data() {
+    return {
+      model: {}
+    };
+  },
+  created() {
+    this.id && this.fetch();
+  },
+  methods: {
+    // save() {
+    //   this.$http.post('items',this.model)
+    // },
+    // 另一种写法
+    async save() {
+      //const res = await this.$http.post("items", this.model);
+      // 真实使用时前端要对后端返回数据做判断，判断是否新增成功
+      if (this.id) {
+        await this.$http.put(`rest/items/${this.id}`, this.model);
+      } else {
+        await this.$http.post("rest/items", this.model);
+      }
+      this.$router.push("/items/list");
+      this.$message({
+        type: "success",
+        message: "保存成功"
+      });
+    },
+    async fetch() {
+      const res = await this.$http.get(`rest/items/${this.id}`);
+      this.model = res.data;
+    }
+  }
+};
+</script>

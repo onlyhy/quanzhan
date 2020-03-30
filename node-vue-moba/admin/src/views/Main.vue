@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-03-27 10:35:29
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-27 13:51:13
+ * @LastEditTime: 2020-03-30 09:48:18
  -->
  <template>
   <el-container style="height: 100vh;">
@@ -15,6 +15,11 @@
             <template slot="title">分类</template>
             <el-menu-item index="/categories/create">新建分类</el-menu-item>
             <el-menu-item index="/categories/list">分类列表</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">物品</template>
+            <el-menu-item index="/items/create">新建物品</el-menu-item>
+            <el-menu-item index="/items/list">物品列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>
