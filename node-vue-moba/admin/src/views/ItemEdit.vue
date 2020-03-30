@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-03-27 10:46:39
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-30 09:54:35
+ * @LastEditTime: 2020-03-30 16:31:15
  -->
 <template>
   <div>
@@ -11,8 +11,16 @@
       <el-form-item label="名称">
         <el-input v-model="model.name"></el-input>
       </el-form-item>
-       <el-form-item label="图标">
-        <el-input v-model="model.icon"></el-input>
+      <el-form-item label="图标">
+        <el-upload
+          class="avatar-uploader"
+          :action="$http.defaults.baseURL + '/upload'"
+          :show-file-list="false"
+          :on-success="afterUpload"
+        >
+          <img v-if="model.icon" :src="model.icon" class="avatar" />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存</el-button>
@@ -34,6 +42,13 @@ export default {
     this.id && this.fetch();
   },
   methods: {
+    // 图片上传成功
+    afterUpload(res){
+      // vue的显式赋值，因为一开始model里面没有定义name属性，普通赋值方法有可能会赋值失败！
+      // 根据后端返回的信息展示图片
+      this.$set(this.model,'icon',res.url)
+      // this.model.icon = res.url
+    },
     // save() {
     //   this.$http.post('items',this.model)
     // },
@@ -59,3 +74,28 @@ export default {
   }
 };
 </script>
+<style>
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
+</style>

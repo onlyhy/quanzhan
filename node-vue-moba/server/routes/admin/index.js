@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-27 11:12:06
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-29 14:23:59
+ * @LastEditTime: 2020-03-30 16:31:24
  */
 
 // 导出一个函数
@@ -55,6 +55,22 @@ module.exports = app =>{
       const model = await req.Model.findById(req.params.id)
       res.send(model)
     })
-    
+
+    // 静态文件托管
+    const multer = require('multer')
+    // 定义一个上传的中间件
+    // dest是文件上传目标地址,dirname是当前文件所在文件夹，这里加dirname是绝对地址
+    const upload = multer({
+      dest: __dirname + '/../../uploads'
+    })
+    // 传接口的时候，那个文件名 Form Data是 file,所以这里是file(这个是可以通过el-upload的参数修改)
+    app.post('/admin/api/upload',upload.single('file'),async(req,res)=>{
+      // 原本req是没有file属性的，因为我们使用了中间件
+      const file = req.file
+      // 服务端地址（正式存储时应该是服务器的域名）
+      file.url = `http://localhost:3000/uploads/${file.filename}`
+      // 返回给客户端文件信息，客户端根据接收到的信息展示图片之类的
+      res.send(file)
+    })
 
 }

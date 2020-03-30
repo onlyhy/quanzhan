@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-03-27 13:47:50
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-30 10:08:43
+ * @LastEditTime: 2020-03-30 16:23:25
  -->
 <template>
   <div>
@@ -9,6 +9,11 @@
     <el-table :data="items">
       <el-table-column prop="_id" label="ID" width="230"></el-table-column>
       <el-table-column prop="name" label="物品名称"></el-table-column>
+      <el-table-column prop="icon" label="图标">
+        <template slot-scope="scope">
+          <img :src="scope.row.icon" style="height:3rem" alt="">
+        </template>
+      </el-table-column>
       <el-table-column fixed="right" label="操作" width="180">
         <template slot-scope="scope">
           <el-button
