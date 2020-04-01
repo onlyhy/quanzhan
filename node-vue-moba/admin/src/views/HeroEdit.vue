@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-03-27 10:46:39
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-01 09:05:27
+ * @LastEditTime: 2020-04-01 14:57:34
  -->
 <template>
   <div>
@@ -181,28 +181,3 @@ export default {
   }
 };
 </script>
-<style>
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 5rem;
-  height: 5rem;
-  line-height: 5rem;
-  text-align: center;
-}
-.avatar {
-  width: 5rem;
-  height: 5rem;
-  display: block;
-}
-</style>
