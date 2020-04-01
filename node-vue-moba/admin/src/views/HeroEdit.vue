@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-03-27 10:46:39
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-31 16:36:53
+ * @LastEditTime: 2020-04-01 09:05:27
  -->
 <template>
   <div>
@@ -143,7 +143,6 @@ export default {
   methods: {
     // 图片上传成功
     afterUpload(res) {
-      // vue的显式赋值，因为一开始model里面没有定义name属性，普通赋值方法有可能会赋值失败！
       // 根据后端返回的信息展示图片
       //this.$set(this.model,'avatar',res.url)
       this.model.avatar = res.url;
