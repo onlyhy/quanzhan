@@ -3,7 +3,7 @@
  * @LastEditors: Please set LastEditors
  * @LastEditTime: 2020-04-01 13:42:05
  */
-// 创建数据库模型 英雄
+// 创建数据库模型 文章
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({

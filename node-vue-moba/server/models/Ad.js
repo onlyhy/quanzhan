@@ -1,9 +1,9 @@
 /*
  * @Date: 2020-03-31 10:11:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-01 14:44:51
+ * @LastEditTime: 2020-04-01 15:42:32
  */
-// 创建数据库模型 英雄
+// 创建数据库模型 广告位
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
