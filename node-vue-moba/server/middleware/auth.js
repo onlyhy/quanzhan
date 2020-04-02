@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-04-02 14:05:26
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-02 14:14:10
+ * @LastEditTime: 2020-04-02 14:21:43
  */
 
  // 登录校验中间件
@@ -11,7 +11,7 @@
     const assert = require('http-assert')
     const AdminUser = require('../models/AdminUser')
     
-        return async(req,res,next)=>{
+      return async(req,res,next)=>{
       //  获取请求头要用小写,用空格分隔（因为前端提交的时候token前面加了Bearer空格），分隔完后是一个数组用pop方法提取最后一个元素
       // 获取客户端请求发过来的token
       const token =String(req.headers.authorization || '').split(' ').pop()

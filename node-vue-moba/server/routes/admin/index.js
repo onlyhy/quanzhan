@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-27 11:12:06
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-02 14:12:09
+ * @LastEditTime: 2020-04-02 14:20:03
  */
 
 // 导出一个函数
@@ -15,7 +15,7 @@ module.exports = app =>{
         // 合并参数
         mergeParams: true
     })
-  //  登录校验中间件
+    //  登录校验中间件
     const authMiddleware = require('../../middleware/auth')
     //  获取模型中间件
      const resourceMiddleware = require('../../middleware/resource')
