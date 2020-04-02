@@ -20,14 +20,23 @@
 export default {
   data() {
     return {
-      model:{}
+      model: {}
     };
   },
   methods: {
-    login(){
-      
+    async login() {
+      const res = await this.$http.post("login", this.model);
+      //  sessionStorage关闭浏览器数据就没了
+      // sessionStorage.token = res.data.token;
+      //  localStorage关闭浏览器下次打开后还有
+      localStorage.token = res.data.token;
+      this.$router.push('/')
+      this.$message({
+        type:'success',
+        message:'登录成功'
+      })
     }
-  },
+  }
 };
 </script>
 <style>

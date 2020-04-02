@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-27 11:12:06
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-30 16:31:24
+ * @LastEditTime: 2020-04-02 10:31:50
  */
 
 // 导出一个函数
@@ -72,5 +72,33 @@ module.exports = app =>{
       // 返回给客户端文件信息，客户端根据接收到的信息展示图片之类的
       res.send(file)
     })
+    app.post('/admin/api/login',async(req,res)=>{
+      // 解构赋值
+      const {username,password} = req.body
+      // 1.根据用户名找用户
+      const AdminUser = require('../../models/AdminUser')
+      // 完整写法
+      // const user = await AdminUser.findOne({username:username})
+      // 因为在定义模型的时候，定义了password字段不可查出来，所以这里强制加上password字段查出来！！
+      const user = await AdminUser.findOne({username}).select('+password')
+      if(!user){
+        return res.status(422).send({
+          message:'用户不存在'
+        })
+      }
+      // 2.校验密码
+      const isValid = require('bcrypt').compareSync(password,user.password)
+      if(!isValid){
+        return res.status(422).send({
+          message:'密码错误'
+        })
+      }
+      // 3.返回token(安装jsonwebtoken)
+      const jwt = require('jsonwebtoken')
+      const token =jwt.sign({id:user._id},app.get('secret'))
+      res.send({token})
+    })
+
+
 
 }

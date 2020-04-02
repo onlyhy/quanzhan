@@ -1,12 +1,16 @@
 /*
  * @Date: 2020-03-27 09:54:03
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-30 16:03:53
+ * @LastEditTime: 2020-04-02 10:30:05
  */
 // 服务端入口文件
 const express = require('express')
 
 const app = express()
+
+// 在实例上设置一个变量(实际应该放在环境变量里，不应该保存在代码里)
+app.set('secret','124hhj4234gyuy89')
+
 // 跨域模块
 app.use(require('cors')())
 // 允许客户端传Json
