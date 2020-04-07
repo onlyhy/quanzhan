@@ -1,0 +1,73 @@
+// reset
+* {
+    // 以边框为准，比如加Padding就不会把自己撑大，而是对内容进行挤压
+    box-sizing: border-box;
+    // tab时不要有高亮之类的
+    outline: none;
+}
+
+// 保证只有这里的px,其他地方用rem
+html {
+    // 基础字体大小
+    font-size: 13px;
+}
+
+body {
+    margin: 0;
+    // Arial,苹果字体，非衬线字体
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2em;
+    background: #f1f1f1;
+}
+
+a {
+    color: #999;
+}
+
+// colors变量，定义键值对
+$colors:("primary":#db9e3f,
+    // 若是会因命名冲突，最好用引号引起来
+    "white":#fff,
+    "light":#f9f9f9,
+    "grey":#999,
+    "dark-1":#343440,
+    "dark":#222,
+    "black":#000,
+
+);
+
+@each $colorKey,
+$color in $colors {
+    .text-#{$colorKey} {
+        color: $color;
+    }
+
+    .bg-#{$colorKey} {
+        color: $color;
+    }
+}
+
+// text align
+// css里的循环
+@each $var in (left, center, right) {
+    .text-#{$var} {
+        text-align: $var;
+    }
+}
+
+// font size
+$base-font-size:1rem;
+// 利用px to rem 扩展工具换算，只留倍数，不加rem单位
+$font-sizes:(xs:0.7692, //10px
+    sm:0.9231, //12px
+    md:1, //13px
+    lg:1.0769, //14px
+    xl:1.2308 //16px
+);
+
+@each $sizeKey,
+$size in $font-sizes {
+    .fs-#{$sizeKey}{
+        font-size: $size * $base-font-size;
+    }
+}
