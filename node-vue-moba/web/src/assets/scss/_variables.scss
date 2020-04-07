@@ -1,0 +1,45 @@
+// colors变量，定义键值对
+$colors:("primary":#db9e3f,
+    "info":#4b67af,
+    // 若是会因命名冲突，最好用引号引起来
+    "white":#fff,
+    "light":#f9f9f9,
+    "grey":#999,
+    "grey-1":#666,
+    "dark-1":#343440,
+    "dark":#222,
+    "black":#000,
+
+);
+
+// font size
+$base-font-size:1rem;
+// 利用px to rem 扩展工具换算，只留倍数，不加rem单位
+$font-sizes:(xxs:0.6154, //8px
+    xs:0.7692, //10px
+    sm:0.9231, //12px
+    md:1, //13px
+    lg:1.0769, //14px
+    xl:1.2308 //16px
+);
+
+// justify content
+$flex-jc:(start: flex-start,
+    end:flex-end,
+    center:center,
+    between:space-between,
+    around:space-around);
+
+// align items
+$flex-ai:(start: flex-start,
+    end:flex-end,
+    center:center,
+    stretch:stretch);
+
+// 0-5
+// .mt-1 => margin top 1级.pb-2 => padding bottom 2级
+$spacing-types:(m:margin, p:padding);
+$spacing-directions:(t:top, r:right, b:bottom, l:left);
+// 基础空间尺寸单位
+$spacing-base-size:1rem;
+$spacing-sizes:(0:0, 1:0.25, 2:0.5, 3:1, 4:1.5, 5:3);
