@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-03-27 10:46:39
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-02 14:57:20
+ * @LastEditTime: 2020-04-07 09:56:00
  -->
 <template>
   <div>
@@ -12,7 +12,7 @@
         <el-input v-model="model.name"></el-input>
       </el-form-item>
       <el-form-item label="图标">
-        <!-- 因为这里的action里执行的是ele的方法不走axios所以没有校验，需要在方法上单独加上请求头的token，这里都是用的在main.js中定义的mixin -->
+        <!-- 因为这里的action里执行的是ele的方法不走axios所以没有拦截器之类的操作，需要在方法上单独加上请求头的token，这里都是用的在main.js中定义的mixin -->
         <el-upload
           class="avatar-uploader"
           :action="uploadUrl"

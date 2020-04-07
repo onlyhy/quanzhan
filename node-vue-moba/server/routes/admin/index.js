@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-27 11:12:06
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-02 14:20:03
+ * @LastEditTime: 2020-04-07 09:02:24
  */
 
 // 导出一个函数
@@ -12,7 +12,7 @@ module.exports = app =>{
     const assert = require('http-assert')
     const AdminUser = require('../../models/AdminUser')
     const router = express.Router({
-        // 合并参数
+        // 合并参数（父级的url参数合并到子路由里面去，这样子路由也能访问到参数比如req.params.resource）
         mergeParams: true
     })
     //  登录校验中间件
@@ -67,7 +67,7 @@ module.exports = app =>{
       dest: __dirname + '/../../uploads'
     })
     // 传接口的时候，那个文件名 Form Data是 file,所以这里是file(这个是可以通过el-upload的参数修改)
-    // 上传也需要验证登录
+    // 上传也需要验证登录v
     app.post('/admin/api/upload',authMiddleware(), upload.single('file'),async(req,res)=>{
       // 原本req是没有file属性的，因为我们使用了中间件
       const file = req.file

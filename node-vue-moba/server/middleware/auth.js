@@ -1,10 +1,10 @@
 /*
  * @Date: 2020-04-02 14:05:26
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-02 14:21:43
+ * @LastEditTime: 2020-04-07 09:48:21
  */
 
- // 登录校验中间件
+ // 登录校验中间件，写成函数的形式，所以引用时需要加括号，如authMiddleware()
    module.exports = options => {
     const jwt = require('jsonwebtoken')
     // 处理http异常

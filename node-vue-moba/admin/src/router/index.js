@@ -16,6 +16,7 @@ import AdminUserEdit from '../views/AdminUserEdit.vue'
 import AdminUserList from '../views/AdminUserList.vue'
 Vue.use(VueRouter)
 
+// isPublic属性用来判断路由权限方便点，官方文档用的是requireAuth（要加的会比较多）
 const routes = [
   {
     path: '/login',name: 'login',component: Login,meta: {isPublic: true}
@@ -92,6 +93,7 @@ routes})
 
 // 路由守卫
 router.beforeEach((to,from,next)=>{
+  // 这里的token随便写也能进入，这里需要更详细的验证
   if(!to.meta.isPublic && !localStorage.token){
     return next('/login')
   }
