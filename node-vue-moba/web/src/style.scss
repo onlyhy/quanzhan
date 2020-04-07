@@ -77,7 +77,7 @@ $size in $font-sizes {
     display: flex;
 }
 
-.flex-column{
+.flex-column {
     flex-direction: column;
 }
 
@@ -110,10 +110,63 @@ $value in $flex-ai {
     }
 }
 
-.flex-1{
+.flex-1 {
     flex: 1;
 }
 
 .flex-grow-1 {
     flex-grow: 1;
+}
+
+// spacing
+// 0-5
+// .mt-1 => margin top 1级.pb-2 => padding bottom 2级
+$spacing-types:(m:margin, p:padding);
+$spacing-directions:(t:top, r:right, b:bottom, l:left);
+// 基础空间尺寸单位
+$spacing-base-size:1rem;
+$spacing-sizes:(0:0, 1:0.25, 2:0.5, 3:1, 4:1.5, 5:3);
+
+@each $typeKey,
+$type in $spacing-types {
+
+    //.m-1
+    @each $sizeKey,
+    $size in $spacing-sizes {
+
+        .#{$typeKey}-#{$sizeKey} {
+            #{$type}: $size * $spacing-base-size;
+        }
+    }
+
+
+    @each $sizeKey,
+    $size in $spacing-sizes {
+
+        // .mx-1 水平方向
+        .#{$typeKey}x-#{$sizeKey} {
+            #{$type}-left: $size * $spacing-base-size;
+            #{$type}-right: $size * $spacing-base-size;
+        }
+
+        // .my-1 垂直方向
+        .#{$typeKey}y-#{$sizeKey} {
+            #{$type}-top: $size * $spacing-base-size;
+            #{$type}-bottom: $size * $spacing-base-size;
+        }
+
+    }
+
+    //.mt-1{margin-top: 0.25rem;}
+    @each $directionKey,
+    $direction in $spacing-directions {
+
+        @each $sizeKey,
+        $size in $spacing-sizes {
+
+            .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+                #{$type}-#{$direction}: $size * $spacing-base-size;
+            }
+        }
+    }
 }
