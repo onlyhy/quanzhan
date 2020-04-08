@@ -26,7 +26,40 @@
       </div>
     </div>
     <!-- end of nav icons -->
-    <i class="iconfont icon-menu"></i>
+    <m-card icon="menu" title="新闻资讯">
+      <div class="nav jc-between">
+        <div class="nav-item active">
+          <div class="nav-link">热门</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+      </div>
+      <div class="pt-3">
+        <swiper>
+          <swiper-slide v-for="n in 5" :key="n">
+            <div class="py-2" v-for="n in 5" :key="n">
+              <span>[新闻]</span>
+              <span>|</span>
+              <span>新皮肤爆料丨拔刀斩恶魂！橘右京新装登场~</span>
+              <span>04/08</span>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
+    </m-card>
+     <m-card icon="menu" title="英雄列表"></m-card>
+     <m-card icon="menu" title="英雄列表"></m-card>
+     <m-card icon="menu" title="英雄列表"></m-card>
   </div>
 </template>
 

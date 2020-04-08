@@ -1,10 +1,17 @@
 {
-  "id": "",
-  "name": "",
+  "id": "1741256",
+  "name": "quanzhan",
   "font_family": "iconfont",
   "css_prefix_text": "icon-",
   "description": "",
   "glyphs": [
+    {
+      "icon_id": "388494",
+      "name": "menu",
+      "font_class": "menu1",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
     {
       "icon_id": "6654507",
       "name": "card-hero",
