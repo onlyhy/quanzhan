@@ -70,9 +70,16 @@ $size in $font-sizes {
     display: flex;
 }
 
+// 纵向排列
 .flex-column {
     flex-direction: column;
 }
+
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
 
 // 主轴
 
@@ -169,4 +176,21 @@ $type in $spacing-types {
     }
 
 
+}
+
+// sprite
+.sprite{
+    background: url(../images/index.png) no-repeat 0 0;
+    background-size: 28.8462rem;
+    display: inline-block;
+    &.sprite-news{
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 63.546% 15.517%;
+    }
+    &.sprite-arrow{
+        width: 0.7692rem;
+        height: 0.7692rem;
+        background-position: 38.577% 52.076%;
+    }
 }
