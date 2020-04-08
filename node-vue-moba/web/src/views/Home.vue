@@ -26,40 +26,21 @@
       </div>
     </div>
     <!-- end of nav icons -->
-    <m-card icon="menu" title="新闻资讯">
-      <div class="nav jc-between">
-        <div class="nav-item active">
-          <div class="nav-link">热门</div>
+    <m-list-card icon="menu" title="新闻资讯" :categories="newsCats">
+      <!-- 具名插槽 category是在插槽处绑定的数据拿过来用-->
+      <template #items="{category}">
+        <div class="py-2" v-for="(news,i) in category.newsList" :key="i">
+          <span>[{{news.categoryName}}]</span>
+          <span>|</span>
+          <span>{{news.title}}</span>
+          <span>{{news.date}}</span>
         </div>
-        <div class="nav-item">
-          <div class="nav-link">新闻</div>
-        </div>
-        <div class="nav-item">
-          <div class="nav-link">新闻</div>
-        </div>
-        <div class="nav-item">
-          <div class="nav-link">新闻</div>
-        </div>
-        <div class="nav-item">
-          <div class="nav-link">新闻</div>
-        </div>
-      </div>
-      <div class="pt-3">
-        <swiper>
-          <swiper-slide v-for="n in 5" :key="n">
-            <div class="py-2" v-for="n in 5" :key="n">
-              <span>[新闻]</span>
-              <span>|</span>
-              <span>新皮肤爆料丨拔刀斩恶魂！橘右京新装登场~</span>
-              <span>04/08</span>
-            </div>
-          </swiper-slide>
-        </swiper>
-      </div>
-    </m-card>
-     <m-card icon="menu" title="英雄列表"></m-card>
-     <m-card icon="menu" title="英雄列表"></m-card>
-     <m-card icon="menu" title="英雄列表"></m-card>
+      </template>
+    </m-list-card>
+
+    <m-card icon="menu" title="英雄列表"></m-card>
+    <m-card icon="menu" title="英雄列表"></m-card>
+    <m-card icon="menu" title="英雄列表"></m-card>
   </div>
 </template>
 
@@ -72,7 +53,54 @@ export default {
         pagination: {
           el: ".pagination-home"
         }
-      }
+      },
+      newsCats: [
+        {
+          name: "热门",
+          // 新建一个数组放5个元素，随便填充什么进去，然后map遍历，将每个元素换成我们要的对象
+          newsList: new Array(5).fill(1).map(v => ({
+            categoryName: "公告",
+            title: "6月2日全服不停机更新公告",
+            date: "06/01"
+          }))
+        },
+        {
+          name: "新闻",
+          // 新建一个数组放5个元素，随便填充什么进去，然后map遍历，将每个元素换成我们要的对象
+          newsList: new Array(5).fill(1).map(v => ({
+            categoryName: "公告",
+            title: "6月2日全服不停机更新公告",
+            date: "06/01"
+          }))
+        },
+        {
+          name: "新闻",
+          // 新建一个数组放5个元素，随便填充什么进去，然后map遍历，将每个元素换成我们要的对象
+          newsList: new Array(5).fill(1).map(v => ({
+            categoryName: "公告",
+            title: "6月2日全服不停机更新公告",
+            date: "06/01"
+          }))
+        },
+        {
+          name: "新闻",
+          // 新建一个数组放5个元素，随便填充什么进去，然后map遍历，将每个元素换成我们要的对象
+          newsList: new Array(5).fill(1).map(v => ({
+            categoryName: "公告",
+            title: "6月2日全服不停机更新公告",
+            date: "06/01"
+          }))
+        },
+        {
+          name: "新闻",
+          // 新建一个数组放5个元素，随便填充什么进去，然后map遍历，将每个元素换成我们要的对象
+          newsList: new Array(5).fill(1).map(v => ({
+            categoryName: "公告",
+            title: "6月2日全服不停机更新公告",
+            date: "06/01"
+          }))
+        }
+      ]
     };
   }
 };
