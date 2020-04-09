@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-27 11:19:57
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-27 13:22:24
+ * @LastEditTime: 2020-04-09 10:16:36
  */
 // 连接数据库
 module.exports = app => {
@@ -10,4 +10,8 @@ module.exports = app => {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
+
+  // 引用所有模型
+  require('require-all')(__dirname + '/../models')
 }
+

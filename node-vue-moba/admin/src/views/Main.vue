@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-03-27 10:35:29
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-01 15:59:08
+ * @LastEditTime: 2020-04-09 09:23:44
  -->
  <template>
   <el-container style="height: 100vh;">
@@ -68,7 +68,8 @@
         <span>王小虎</span>
       </el-header>
       <el-main>
-        <router-view></router-view>
+        <!-- 路由默认以组件区分，所以当不同路由用相同组件时需要加key根据key区分 -->
+        <router-view :key="$route.path"></router-view>
       </el-main>
     </el-container>
   </el-container>

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-04-08 15:46:20
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-08 16:21:18
+ * @LastEditTime: 2020-04-08 16:56:53
  -->
 <template>
      <m-card :icon="icon" :title="title">
@@ -15,6 +15,7 @@
       <div class="pt-3">
         <swiper>
           <swiper-slide v-for="(category,i) in categories" :key="i">
+              <!-- 每个卡片的swiper内容可能是不一样的形式可能是文字列表可能是图片之类的，因此用具名插槽，在引用m-list-card的地方写上template -->
             <slot name="items" :category="category"></slot>
           </swiper-slide>
         </swiper>

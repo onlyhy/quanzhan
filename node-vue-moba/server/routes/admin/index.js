@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-27 11:12:06
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-07 09:02:24
+ * @LastEditTime: 2020-04-09 10:03:31
  */
 
 // 导出一个函数
@@ -50,7 +50,7 @@ module.exports = app =>{
              queryOptions.populate = 'parent'
          }
     //   const items = await req.Model.find().populate('parent').limit(10)
-    const items = await req.Model.find().setOptions(queryOptions).limit(10)
+    const items = await req.Model.find().setOptions(queryOptions).limit(100)
       res.send(items)
     })
     // 资源详情
