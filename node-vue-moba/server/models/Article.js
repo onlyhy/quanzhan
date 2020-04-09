@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-31 10:11:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-09 13:17:31
+ * @LastEditTime: 2020-04-09 15:27:47
  */
 // 创建数据库模型 文章
 const mongoose = require('mongoose')
@@ -14,5 +14,6 @@ const schema = new mongoose.Schema({
 },
 // 自动加时间
 {timestamps: true})
+
 
 module.exports = mongoose.model('Article', schema)
