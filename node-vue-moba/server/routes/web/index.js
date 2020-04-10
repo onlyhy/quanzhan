@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-04-09 10:17:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 14:33:33
+ * @LastEditTime: 2020-04-10 15:25:43
  */
 module.exports = app => {
   const router = require('express').Router()
@@ -174,6 +174,12 @@ module.exports = app => {
     //   return cat
     // })
     res.send(cats)
+  })
+
+  // 文章详情
+  router.get('/articles/:id',async(req,res)=>{
+    const data = await Article.findById(req.params.id)
+    res.send(data)
   })
 
   app.use('/web/api', router)
