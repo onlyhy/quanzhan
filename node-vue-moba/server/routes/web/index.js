@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-04-09 10:17:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 14:02:52
+ * @LastEditTime: 2020-04-10 14:33:33
  */
 module.exports = app => {
   const router = require('express').Router()
@@ -39,7 +39,7 @@ module.exports = app => {
     res.send(newsList)
 
   })
-  // 新闻列表
+  // 新闻列表接口
   router.get('/news/list', async (req, res) => {
     // 先找出点击的分类
     // 关联children再关联children的newsList
@@ -121,5 +121,60 @@ module.exports = app => {
     }
     res.send(await Hero.find())
   })
+
+ // 英雄列表接口(直接参照新闻列表接口)
+  router.get('/heroes/list', async (req, res) => {
+    // 这边要用聚合查询（在一次查询里可以同时执行好几次查询然后得到想要的结果）
+    const parent = await Category.findOne({
+      name: '英雄分类'
+    })
+    // $match类似于where条件查询
+    // $lookup类似于join，外连接，关联查询
+    // articles是因为新建模型的时候省略的第三个参数集合名是按照模型名来的，小写复数形式
+    // localField本地键     foreignField外地键
+    // as 起个名字
+    // $slice是一个操作符表示取它里面的几个
+    // $newsList就是我们查出来的数据即as里写的newsList
+    // 总的来说：先查找出parent是新闻分类的分类，然后根据分类_id去articles中找到categories中有这个分类_id的文章设置为newsList属性，最后将newsList属性限制为只要5条记录
+    const cats = await Category.aggregate([
+      { $match: { parent: parent._id } },
+      {
+        $lookup: {
+          from: 'heroes',
+          localField: '_id',
+          foreignField: 'categories',
+          as: 'heroList'
+        }
+      },
+      // 因为页面上是把每个分类的所有英雄都展示出来了所以不需要像新闻一样取5个了
+      // {
+      //   $addFields:{
+      //     heroList: {$slice:['$heroList',5]}
+      //   }
+      // }
+    ])
+    // 在查询结果前面加一个对象
+    // 热门这里关联一下categories，以便后面取一个分类名
+    const subCats = cats.map(v=>
+      v._id
+    )
+    cats.unshift({
+      name:'热门',
+      heroList: await Hero.find().where({
+        categories:{$in: subCats}
+      }).limit(10).lean()
+    })
+    // 英雄这边不需要显示分类名字
+    // // 处理前端要在资讯前的[]显示的分类名
+    // cats.map(cat=>{
+    //   cat.heroList.map(news=>{
+    //     news.categoryName = cat.name === '热门'? news.categories[0].name : cat.name
+    //     return news
+    //   })
+    //   return cat
+    // })
+    res.send(cats)
+  })
+
   app.use('/web/api', router)
 }
