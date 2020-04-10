@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-31 10:11:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-31 10:47:04
+ * @LastEditTime: 2020-04-10 13:57:12
  */
 // 创建数据库模型 英雄
 const mongoose = require('mongoose')
@@ -41,4 +41,4 @@ const schema = new mongoose.Schema({
   }]
 })
 
-module.exports = mongoose.model('Hero', schema)
+module.exports = mongoose.model('Hero', schema,'heroes')
