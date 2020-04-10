@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-04-09 10:17:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-09 16:11:36
+ * @LastEditTime: 2020-04-09 16:31:18
  */
 module.exports = app => {
   const router = require('express').Router()
@@ -51,8 +51,8 @@ module.exports = app => {
     const parent = await Category.findOne({
       name: '新闻分类'
     })
-    // match类似于where条件查询
-    // lookup类似于join，外连接
+    // $match类似于where条件查询
+    // $lookup类似于join，外连接
     // articles是因为新建模型的时候省略的第三个参数集合名是按照模型名来的，小写复数形式
     // localField本地键     foreignField外地键
     // as 起个名字

@@ -57,6 +57,15 @@ $size in $font-sizes {
     }
 }
 
+// text overflow
+.text-ellipsis{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // 不换行
+    white-space: nowrap;
+}
+
 // width height
 .w-100 {
     width: 100%;
