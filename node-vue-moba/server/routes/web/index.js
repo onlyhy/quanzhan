@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-04-09 10:17:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 15:25:43
+ * @LastEditTime: 2020-04-13 10:43:24
  */
 module.exports = app => {
   const router = require('express').Router()
@@ -178,7 +178,11 @@ module.exports = app => {
 
   // 文章详情
   router.get('/articles/:id',async(req,res)=>{
-    const data = await Article.findById(req.params.id)
+    const data = await Article.findById(req.params.id).lean()
+    // 找跟它是相同分类的限制两条
+    data.related = await Article.find().where({
+      categories:{$in:data.categories}
+    }).limit(2)
     res.send(data)
   })
 
