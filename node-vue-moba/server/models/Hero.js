@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-31 10:11:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 13:57:12
+ * @LastEditTime: 2020-04-13 14:30:19
  */
 // 创建数据库模型 英雄
 const mongoose = require('mongoose')
@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 const schema = new mongoose.Schema({
   name: {type: String},
   avatar: {type: String},
+  banner: {type: String},
   title: {type: String},
   categories: [{type: mongoose.SchemaTypes.ObjectId, ref: 'Category'}],
   scores: {
@@ -20,6 +21,8 @@ const schema = new mongoose.Schema({
   skills: [{
     icon: {type: String},
     name: {type: String},
+    delay: {type: String},
+    cost: {type: String},
     description: {type: String},
     tips: {type: String}
   }],
@@ -41,4 +44,4 @@ const schema = new mongoose.Schema({
   }]
 })
 
-module.exports = mongoose.model('Hero', schema,'heroes')
+module.exports = mongoose.model('Hero', schema, 'heroes')
