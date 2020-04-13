@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-04-09 10:17:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-13 10:43:24
+ * @LastEditTime: 2020-04-13 13:38:17
  */
 module.exports = app => {
   const router = require('express').Router()
@@ -183,6 +183,12 @@ module.exports = app => {
     data.related = await Article.find().where({
       categories:{$in:data.categories}
     }).limit(2)
+    res.send(data)
+  })
+
+  // 英雄详情
+  router.get('/heroes/:id', async (req,res)=>{
+    const data = await Hero.findById(req.params.id).lean()
     res.send(data)
   })
 
