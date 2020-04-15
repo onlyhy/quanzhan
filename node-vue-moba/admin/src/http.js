@@ -1,13 +1,14 @@
 /*
  * @Date: 2020-03-27 11:02:58
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-02 13:25:16
+ * @LastEditTime: 2020-04-15 15:57:25
  */
 import axios from 'axios'
 import Vue from 'vue'
 import router from './router'
 const http = axios.create({
-  baseURL: 'http://localhost:3000/admin/api'
+  baseURL: process.env.VUE_APP_API_URL || '/admin/api',
+  // baseURL: 'http://localhost:3000/admin/api'
 })
 
 // require拦截器
