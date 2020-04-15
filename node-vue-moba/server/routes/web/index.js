@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-04-09 10:17:25
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-13 13:38:17
+ * @LastEditTime: 2020-04-15 15:19:17
  */
 module.exports = app => {
   const router = require('express').Router()
@@ -188,7 +188,9 @@ module.exports = app => {
 
   // 英雄详情
   router.get('/heroes/:id', async (req,res)=>{
-    const data = await Hero.findById(req.params.id).lean()
+    const data = await Hero.findById(req.params.id)
+    .populate('categories')
+    .lean()
     res.send(data)
   })
 
